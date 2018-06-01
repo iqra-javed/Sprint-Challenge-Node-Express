@@ -13,5 +13,18 @@ router.get('/', (req, res) => {
         })
 })
 
+// GET REQUEST BY ID
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    actionModel.get(id)
+        .then(action => {
+            res.json(action)
+        })
+        .catch(error => {
+            res.status(500).json({error: `There was an error retrieving the action with id ${id}.`})
+        })
+})
+
+
 
 module.exports = router;
