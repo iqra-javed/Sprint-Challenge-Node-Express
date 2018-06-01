@@ -9,8 +9,8 @@ server.use(express.json());
 server.use(cors());
 
 // sub--applications
-const projectsRoutes = require('.routes/projects/projectsRoutes');
-// const actionsRoutes = require('.routes/actions/actionsRoutes');
+const projectsRoutes = require('.appRoutes/projects/projectsRoutes');
+// const actionsRoutes = require('.appRoutes/actions/actionsRoutes');
 
 // route handlers
 server.use('/api/projects', projectsRoutes);
