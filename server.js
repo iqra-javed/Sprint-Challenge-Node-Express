@@ -10,10 +10,10 @@ server.use(cors());
 
 // sub--applications
 const projectsRoutes = require('./appRoutes/projects/projectsRoutes');
-// const actionsRoutes = require('./appRoutes/actions/actionsRoutes');
+const actionsRoutes = require('./appRoutes/actions/actionsRoutes');
 
 // route handlers
 server.use('/api/projects', projectsRoutes);
-// server.use('/api/actions', actionsRoutes);
+server.use('/api/actions', actionsRoutes);
 
 server.listen(port, console.log(`Server is listening on port ${port}`));
