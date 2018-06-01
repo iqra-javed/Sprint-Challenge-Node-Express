@@ -47,6 +47,25 @@ router.post('/', (req, res) => {
         })
 })
 
+// DELETE REQUEST
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+
+    actionModel.remove(id)
+        .then(response => {
+            // console.log(response) // 1 === success , 0 === fail
+            if(response) {
+                res.json({success: `Action with id ${id} was successfully deleted.`})
+            } else {
+                res.status(404).json({error: `Action with id ${id} does not exist`})
+            }    
+        })
+        .catch(error => {
+            res.status(500).json({error: 'The Action could not be deleted.'})
+        })
+
+})
+
 
 
 module.exports = router;
