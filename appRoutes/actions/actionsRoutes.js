@@ -25,6 +25,28 @@ router.get('/:id', (req, res) => {
         })
 })
 
+// POST REQUEST
+router.post('/', (req, res) => {
+    const {project_id, description, notes, completed} = req.body;
+    
+    if(!project_id) {
+        res.status(404).json({error: 'Please provide a project id for this action.'})
+        return;
+    }
+    if(!description || description.length > 128) {
+        res.status(400).json({error: 'Please provide a description for the new action that contains 1 - 128 characters.'})
+        return;
+    }
+
+    actionModel.insert({project_id, description, notes, completed})
+        .then(response => {
+            res.status(201).json(response)
+        })
+        .catch(error => {
+            res.status(500).json({error: 'The new action could not be created.'})
+        })
+})
+
 
 
 module.exports = router;
