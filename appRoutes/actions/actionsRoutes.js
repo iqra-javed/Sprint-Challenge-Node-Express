@@ -66,6 +66,26 @@ router.delete('/:id', (req, res) => {
 
 })
 
+// PUT REQUEST
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const {project_id, description, notes, completed} = req.body;
+
+    if(!description || description.length > 128) {
+        res.status(400).json({error: 'Please provide a description that is 1 - 128 characters long.'})
+        return;
+    }
+    
+    actionModel.update(id, {project_id, description, notes, completed})
+        .then(response => {
+            // console.log(response)
+                res.json(response)
+        })
+        .catch(error => {
+            res.status(500).json({error: 'The action could not be updated.'})
+        })
+})
+
 
 
 module.exports = router;
