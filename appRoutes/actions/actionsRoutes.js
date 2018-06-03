@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
     const { id } = req.params;
     actionModel.get(id)
         .then(action => {
-            console.log(action)
+            // console.log(action)
             res.json(action)
         })
         .catch(error => {

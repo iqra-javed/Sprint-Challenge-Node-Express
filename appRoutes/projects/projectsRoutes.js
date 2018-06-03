@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
         })
 })
 
-
 // GET REQUEST BY ID
 router.get('/:id', (req, res) => {
     const { id } = req.params;
@@ -97,7 +96,7 @@ router.get('/:id/actions', (req, res) => {
     projectModel.getProjectActions(id)
         .then(actions => {
             // console.log(actions)
-            if(actions.length === 0) {
+            if(actions.length === 0) { //if actions is an empty array...
                 res.status(404).json({error: `Project with id ${id} does not exist or does not contain any actions.`})
                 return;
             }
