@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const server = express();
-const port = 6000;
+const port = 6001;
 
 
 // middleware
-server.use(express.json());
+server.use(express.json()); //express.json() is a global middleware
 server.use(cors());
 
 // sub--applications
