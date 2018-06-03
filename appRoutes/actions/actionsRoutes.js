@@ -55,7 +55,7 @@ router.delete('/:id', (req, res) => {
         .then(response => {
             // console.log(response) // 1 === success , 0 === fail
             if(response) {
-                res.json({success: `Action with id ${id} was successfully deleted.`})
+                res.status(204).json({success: `Action with id ${id} was successfully deleted.`}) //status 204: No Content ..lets the client know there's nothing in the body obj. 
             } else {
                 res.status(404).json({error: `Action with id ${id} does not exist`})
             }    

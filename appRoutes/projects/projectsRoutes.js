@@ -96,12 +96,12 @@ router.get('/actions/:projectId', (req, res) => {
 
     projectModel.getProjectActions(projectId)
         .then(response => {
+            console.log(response)
             if(response.length === 0) {
                 res.status(404).json({error: `Project with id ${id} does not exist or does not contain any actions.`})
-            } else {
-                res.json(response)
+                return;
             }
-            
+                res.json(response)
         })
         .catch(error => {
             res.status(500).json({error: 'The actions for the project could not be retrieved.'})
