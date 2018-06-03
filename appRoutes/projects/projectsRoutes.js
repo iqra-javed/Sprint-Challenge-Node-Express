@@ -31,11 +31,11 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     const {name, description, completed} = req.body;
     if(!name || name.length > 128) {
-        res.status(400).json({error: 'Please provide a name for the project'})
+        res.status(400).json({error: 'Please provide a name for the project that contains 1 - 128 characters'})
         return;
     }
     if(!description || description.length > 128) {
-        res.status(400).json({error: 'Please provide a description for the project'})
+        res.status(400).json({error: 'Please provide a description for the project that contains 1 - 128 characters'})
         return;
     }
 
