@@ -91,17 +91,17 @@ router.put('/:id', (req, res) => {
 })
 
 // GET REQUEST FOR PROJECT'S ACTIONS
-router.get('/actions/:projectId', (req, res) => {
-    const { projectId } = req.params;
+router.get('/:id/actions', (req, res) => { 
+    const { id } = req.params;
 
-    projectModel.getProjectActions(projectId)
-        .then(response => {
-            console.log(response)
-            if(response.length === 0) {
+    projectModel.getProjectActions(id)
+        .then(actions => {
+            // console.log(actions)
+            if(actions.length === 0) {
                 res.status(404).json({error: `Project with id ${id} does not exist or does not contain any actions.`})
                 return;
             }
-                res.json(response)
+                res.json(actions)
         })
         .catch(error => {
             res.status(500).json({error: 'The actions for the project could not be retrieved.'})
